@@ -1,3 +1,5 @@
+import base64
+
 import requests
 
 from alegra.exceptions import UnauthorizedError, WrongFormatInputError, ContactsLimitExceededError
@@ -7,8 +9,13 @@ class Client(object):
     URL = "https://api.alegra.com/api/v1/"
     headers = {"Content-Type": "application/json", "Accept": "application/json"}
 
-    def __init__(self, token):
-        self.headers.update(Authorization=f"Bearer {token}")
+    def __init__(self, email, token):
+        api_key = base64.b64encode(f"{email}:{token}".encode()).decode()
+        print(api_key)
+        self.headers.update(Authorization=f"Basic {api_key}")
+
+    def get_company_info(self):
+        return self.get("company")
 
     def get(self, endpoint, **kwargs):
         response = self.request("GET", endpoint, **kwargs)
@@ -31,17 +38,11 @@ class Client(object):
         return self.parse(response)
 
     def request(self, method, endpoint, headers=None, **kwargs):
-        _headers = {
-            "Accept": "application/json",
-        }
-        if self.token:
-            _headers["Authorization"] = "Bearer " + self.token["access_token"]
-        if headers:
-            _headers.update(headers)
-        if "Content-Type" not in _headers:
-            _headers["Content-Type"] = "application/json"
 
-        return requests.request(method, self.URL + endpoint, headers=_headers, **kwargs)
+        if headers:
+            self.headers.update(headers)
+
+        return requests.request(method, self.URL + endpoint, headers=self.headers, **kwargs)
 
     def parse(self, response):
         status_code = response.status_code
