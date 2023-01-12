@@ -11,11 +11,19 @@ class Client(object):
 
     def __init__(self, email, token):
         api_key = base64.b64encode(f"{email}:{token}".encode()).decode()
-        print(api_key)
         self.headers.update(Authorization=f"Basic {api_key}")
 
     def get_company_info(self):
         return self.get("company")
+
+    def get_current_user(self):
+        return self.get("users/self")
+
+    def list_contacts(self):
+        return self.get("contacts")
+
+    def list_sellers(self):
+        return self.get("sellers")
 
     def get(self, endpoint, **kwargs):
         response = self.request("GET", endpoint, **kwargs)
