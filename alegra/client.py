@@ -25,6 +25,9 @@ class Client(object):
     def list_sellers(self):
         return self.get("sellers")
 
+    def list_price_lists(self):
+        return self.get("price-lists")
+
     def get(self, endpoint, **kwargs):
         response = self.request("GET", endpoint, **kwargs)
         return self.parse(response)

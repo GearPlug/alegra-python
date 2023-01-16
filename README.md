@@ -26,3 +26,7 @@ contacts = client.list_contacts()
 ```
 vendedores = client.list_sellers()
 ```
+### List price lists (Lista de precios)
+```
+lista_precios = client.list_price_lists()
+```
