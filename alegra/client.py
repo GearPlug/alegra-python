@@ -1,4 +1,5 @@
 import base64
+import json
 
 import requests
 
@@ -22,11 +23,23 @@ class Client(object):
     def list_contacts(self):
         return self.get("contacts")
 
+    def create_contact(self, contact):
+        """
+        Contact must be a dict object, check readme for an example.
+        """
+        return self.post("contacts", data=json.dumps(contact))
+
     def list_sellers(self):
         return self.get("sellers")
 
     def list_price_lists(self):
         return self.get("price-lists")
+
+    def list_terms(self):
+        return self.get("terms")
+
+    def list_accounts(self):
+        return self.get("categories")
 
     def get(self, endpoint, **kwargs):
         response = self.request("GET", endpoint, **kwargs)

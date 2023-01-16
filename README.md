@@ -22,6 +22,28 @@ user = client.get_current_user()
 ```
 contacts = client.list_contacts()
 ```
+### Create Contact (Contacto)
+```
+contacto = {
+    "address": {"city": "Villavicencio", "address": "Calle 10 #01-10"},
+    "internalContacts": [
+        {
+            "name": "Lina",
+            "lastName": "Montoya",
+            "email": "prueba4@alegra.com",
+        }
+    ],
+    "name": "Lina Montoya",
+    "identification": "1018425722",
+    "mobile": "38845555610",
+    "seller": 1,
+    "priceList": 1,
+    "term": 1,
+    "email": "lina@montoya.com",
+    "type": "client"
+}
+contacts = client.create_contact(contacto)
+```
 ### List sellers (Vendedores)
 ```
 vendedores = client.list_sellers()
@@ -29,4 +51,12 @@ vendedores = client.list_sellers()
 ### List price lists (Lista de precios)
 ```
 lista_precios = client.list_price_lists()
+```
+### List Terms (Lista de condiciones de pago)
+```
+condiciones = client.list_terms()
+```
+### List Accounts (Listado de cuentas)
+```
+condiciones = client.list_accounts()
 ```
