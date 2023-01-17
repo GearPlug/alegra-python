@@ -20,7 +20,9 @@ user = client.get_current_user()
 ```
 ### List contacts (Contactos)
 ```
-contacts = client.list_contacts()
+contacts = client.list_contacts(order_field=None, order="ASC", limit=None, start=None)
+# order options = "ASC" or "DESC"
+# Max limit = 30
 ```
 ### Create Contact (Contacto)
 ```
@@ -42,7 +44,7 @@ contacto = {
     "email": "lina@montoya.com",
     "type": "client"
 }
-contacts = client.create_contact(contacto)
+contact = client.create_contact(contacto)
 ```
 ### List sellers (Vendedores)
 ```

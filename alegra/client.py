@@ -20,8 +20,9 @@ class Client(object):
     def get_current_user(self):
         return self.get("users/self")
 
-    def list_contacts(self):
-        return self.get("contacts")
+    def list_contacts(self, limit=None, order="ASC", order_field=None, start=None):
+        params = {"order_direction": order, "order_field": order_field, "limit": limit, "start": start}
+        return self.get("contacts", params=params)
 
     def create_contact(self, contact):
         """
