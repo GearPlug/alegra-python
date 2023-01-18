@@ -18,13 +18,14 @@ company = client.get_company_info()
 ```
 user = client.get_current_user()
 ```
-### List contacts (Contactos)
+### Contacts
+#### - List contacts (Contactos)
 ```
 contacts = client.list_contacts(order_field=None, order="ASC", limit=None, start=None)
 # order options = "ASC" or "DESC"
 # Max limit = 30
 ```
-### Create Contact (Contacto)
+#### - Create Contact (Contacto)
 ```
 contacto = {
     "address": {"city": "Villavicencio", "address": "Calle 10 #01-10"},
@@ -36,7 +37,7 @@ contacto = {
         }
     ],
     "name": "Lina Montoya",
-    "identification": "1018425722",
+    "identification": "1018425711",
     "mobile": "38845555610",
     "seller": 1,
     "priceList": 1,
@@ -46,19 +47,48 @@ contacto = {
 }
 contact = client.create_contact(contacto)
 ```
-### List sellers (Vendedores)
+#### - List sellers (Vendedores)
 ```
 vendedores = client.list_sellers()
 ```
-### List price lists (Lista de precios)
+### Inventory
+#### - List items (Items)
+```
+items = client.list_items()
+```
+#### - List item Categories (Categorias de items)
+```
+item_categorias = client.list_item_categories()
+```
+#### - List Warehouses (Bodegas)
+```
+bodegas = client.list_warehouses()
+```
+#### - List Variant Attributes (Variantes)
+```
+atributos_variantes = client.list_variant_attributes()
+```
+#### - List price lists (Lista de precios)
 ```
 lista_precios = client.list_price_lists()
 ```
-### List Terms (Lista de condiciones de pago)
+### Terms
+#### - List Terms (Condiciones de pago)
 ```
 condiciones = client.list_terms()
 ```
-### List Accounts (Listado de cuentas)
+### Taxes
+### - List Taxes (Impuestos)
 ```
-condiciones = client.list_accounts()
+impuestos = client.list_taxes()
+```
+### Accounts
+#### - List Accounts (Cuentas)
+```
+cuentas = client.list_accounts()
+```
+#### - List Accounts Flatten (Cuentas)
+```
+# Returns a flatten list of accounts
+cuentas = client.list_accounts_flatten()
 ```

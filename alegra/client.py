@@ -30,6 +30,18 @@ class Client(object):
         """
         return self.post("contacts", data=json.dumps(contact))
 
+    def list_items(self):
+        return self.get("items")
+
+    def list_item_categories(self):
+        return self.get("item-categories")
+
+    def list_warehouses(self):
+        return self.get("warehouses")
+
+    def list_variant_attributes(self):
+        return self.get("variant-attributes")
+
     def list_sellers(self):
         return self.get("sellers")
 
@@ -41,6 +53,23 @@ class Client(object):
 
     def list_accounts(self):
         return self.get("categories")
+
+    def flatten_accs(self, accounts, acc_list):
+        for acc in accounts:
+            children = acc.pop("children")
+            acc_list.append(acc)
+            if len(children) > 0:
+                self.flatten_accs(children, acc_list)
+        return acc_list
+
+    def list_accounts_flatten(self):
+        accounts = self.get("categories")
+        acc_list = []
+        res = self.flatten_accs(accounts, acc_list)
+        return res
+
+    def list_taxes(self):
+        return self.get("taxes")
 
     def get(self, endpoint, **kwargs):
         response = self.request("GET", endpoint, **kwargs)
