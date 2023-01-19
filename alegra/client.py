@@ -39,6 +39,9 @@ class Client(object):
     def list_warehouses(self):
         return self.get("warehouses")
 
+    def list_item_custom_fields(self):
+        return self.get("custom-fields")
+
     def list_variant_attributes(self):
         return self.get("variant-attributes")
 

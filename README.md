@@ -64,6 +64,10 @@ item_categorias = client.list_item_categories()
 ```
 bodegas = client.list_warehouses()
 ```
+#### - List Item Custom Fields (Campos adicionales)
+```
+campos = client.list_item_custom_fields()
+```
 #### - List Variant Attributes (Variantes)
 ```
 atributos_variantes = client.list_variant_attributes()
@@ -78,7 +82,7 @@ lista_precios = client.list_price_lists()
 condiciones = client.list_terms()
 ```
 ### Taxes
-### - List Taxes (Impuestos)
+#### - List Taxes (Impuestos)
 ```
 impuestos = client.list_taxes()
 ```
