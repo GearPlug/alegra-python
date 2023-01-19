@@ -56,6 +56,27 @@ vendedores = client.list_sellers()
 ```
 items = client.list_items()
 ```
+#### - Create item (Item)
+```
+item = {
+    "name": "PS5",
+    "description": "Play Station 5",
+    "reference": "PS5 nuevo",
+    "price": 3750000,
+    "category": {"id": 5064},
+    "inventory": {
+        "unit": "unit",
+        "unitCost": 40000,
+        "negativeSale": False,
+        "warehouses": [{"initialQuantity": 4, "id": 1, "minQuantity": 2, "maxQuantity": 10}],
+    },
+    "tax": 2,
+    "type": "product",
+    "customFields": [{"id": 1, "value": "BHUJSK888833"}, {"id": 2, "value": 44}, {"id": 3, "value": 44.45}],
+    "itemCategory": {"id": 1}
+}
+item_created = client.create_item(item)
+```
 #### - List item Categories (Categorias de items)
 ```
 item_categorias = client.list_item_categories()
@@ -89,10 +110,7 @@ impuestos = client.list_taxes()
 ### Accounts
 #### - List Accounts (Cuentas)
 ```
-cuentas = client.list_accounts()
-```
-#### - List Accounts Flatten (Cuentas)
-```
-# Returns a flatten list of accounts
-cuentas = client.list_accounts_flatten()
+cuentas = client.list_accounts(format_acc="tree", type_acc=None)
+# format_acc options = "tree" or "plain"
+# type_acc options = "income", "expense", "asset", "liability" or "equity"
 ```

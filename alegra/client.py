@@ -26,12 +26,18 @@ class Client(object):
 
     def create_contact(self, contact):
         """
-        Contact must be a dict object, check readme for an example.
+        Contact must be a dict object, check README for an example.
         """
         return self.post("contacts", data=json.dumps(contact))
 
     def list_items(self):
         return self.get("items")
+
+    def create_item(self, item):
+        """
+        Item must be a dict object, check README for an example.
+        """
+        return self.post("items", data=json.dumps(item))
 
     def list_item_categories(self):
         return self.get("item-categories")
@@ -54,22 +60,9 @@ class Client(object):
     def list_terms(self):
         return self.get("terms")
 
-    def list_accounts(self):
-        return self.get("categories")
-
-    def flatten_accs(self, accounts, acc_list):
-        for acc in accounts:
-            children = acc.pop("children")
-            acc_list.append(acc)
-            if len(children) > 0:
-                self.flatten_accs(children, acc_list)
-        return acc_list
-
-    def list_accounts_flatten(self):
-        accounts = self.get("categories")
-        acc_list = []
-        res = self.flatten_accs(accounts, acc_list)
-        return res
+    def list_accounts(self, format_acc="tree", type_acc=None):
+        params = {"format": format_acc, "type": type_acc}
+        return self.get("categories", params=params)
 
     def list_taxes(self):
         return self.get("taxes")
