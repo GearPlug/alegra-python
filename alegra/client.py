@@ -20,7 +20,7 @@ class Client(object):
     def get_current_user(self):
         return self.get("users/self")
 
-    def list_contacts(self, limit=None, order="ASC", order_field=None, start=None):
+    def list_contacts(self, order_field=None, order="ASC", limit=None, start=None):
         params = {"order_direction": order, "order_field": order_field, "limit": limit, "start": start}
         return self.get("contacts", params=params)
 
@@ -30,8 +30,9 @@ class Client(object):
         """
         return self.post("contacts", data=json.dumps(contact))
 
-    def list_items(self):
-        return self.get("items")
+    def list_items(self, order_field=None, order="ASC", limit=None, start=None):
+        params = {"order_direction": order, "order_field": order_field, "limit": limit, "start": start}
+        return self.get("items", params=params)
 
     def create_item(self, item):
         """

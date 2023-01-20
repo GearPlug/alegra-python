@@ -54,7 +54,9 @@ vendedores = client.list_sellers()
 ### Inventory
 #### - List items (Items)
 ```
-items = client.list_items()
+items = client.list_items(order_field=None, order="ASC", limit=None, start=None)
+# order options = "ASC" or "DESC"
+# Max limit = 30
 ```
 #### - Create item (Item)
 ```
