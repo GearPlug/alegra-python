@@ -1,4 +1,4 @@
-![](https://img.shields.io/badge/version-0.1.0-success) ![](https://img.shields.io/badge/code-Python-4B8BBE?logo=python&logoColor=white)
+![](https://img.shields.io/badge/version-0.1.1-success) ![](https://img.shields.io/badge/Python-3.8%20|%203.9%20|%203.10%20|%203.11-4B8BBE?logo=python&logoColor=white)
 # alegra-python
 
 *alegra-python* is an API wrapper for Alegra (accounting software), written in Python
@@ -99,6 +99,14 @@ atributos_variantes = client.list_variant_attributes()
 #### - List price lists (Lista de precios)
 ```
 lista_precios = client.list_price_lists()
+```
+### Invoices
+#### - List invoices (Facturas de venta)
+```
+items = client.list_invoices(order_field=None, order="ASC", limit=None, start=None, date=None)
+# order options = "ASC" or "DESC"
+# Max limit = 30
+# Date format YYYY-MM-DD
 ```
 ### Terms
 #### - List Terms (Condiciones de pago)

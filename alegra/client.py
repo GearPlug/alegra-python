@@ -40,6 +40,10 @@ class Client(object):
         """
         return self.post("items", data=json.dumps(item))
 
+    def list_invoices(self, order_field=None, order="ASC", limit=None, start=None, date=None):
+        params = {"order_direction": order, "order_field": order_field, "limit": limit, "start": start, "date": date}
+        return self.get("invoices", params=params)
+
     def list_item_categories(self):
         return self.get("item-categories")
 
