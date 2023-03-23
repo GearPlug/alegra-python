@@ -1,34 +1,38 @@
-![](https://img.shields.io/badge/version-0.1.1-success) ![](https://img.shields.io/badge/Python-3.8%20|%203.9%20|%203.10%20|%203.11-4B8BBE?logo=python&logoColor=white)
-# alegra-python
 
+# alegra-python
+![](https://img.shields.io/badge/version-0.1.2-success) ![](https://img.shields.io/badge/Python-3.8%20|%203.9%20|%203.10%20|%203.11-4B8BBE?logo=python&logoColor=white)  
 *alegra-python* is an API wrapper for Alegra (accounting software), written in Python
 
 ## Installing
-```
+```python
 pip install alegra-python
 ```
 ## Usage
-```
-from alegra.client import Client
+```python
 client = Client(email, token)
 ```
 ### Get company information (Compañía)
-```
+```python
 company = client.get_company_info()
 ```
 ### Get current user (Usuario)
-```
+```python
 user = client.get_current_user()
 ```
 ### Contacts
 #### - List contacts (Contactos)
-```
+```python
 contacts = client.list_contacts(order_field=None, order="ASC", limit=None, start=None)
 # order options = "ASC" or "DESC"
 # Max limit = 30
 ```
-#### - Create Contact (Contacto)
+#### - Get contact by id
+```python
+contact = client.get_contact(contact_id, extra_fields=None)
+# extra_fields current options are: 'statementLink', 'url' or 'statementLink,url'
 ```
+#### - Create Contact (Contacto)
+```python
 contacto = {
     "address": {"city": "Villavicencio", "address": "Calle 10 #01-10"},
     "internalContacts": [
@@ -50,18 +54,18 @@ contacto = {
 contact = client.create_contact(contacto)
 ```
 #### - List sellers (Vendedores)
-```
+```python
 vendedores = client.list_sellers()
 ```
 ### Inventory
 #### - List items (Items)
-```
+```python
 items = client.list_items(order_field=None, order="ASC", limit=None, start=None)
 # order options = "ASC" or "DESC"
 # Max limit = 30
 ```
 #### - Create item (Item)
-```
+```python
 item = {
     "name": "PS5",
     "description": "Play Station 5",
@@ -82,28 +86,28 @@ item = {
 item_created = client.create_item(item)
 ```
 #### - List item Categories (Categorias de items)
-```
+```python
 item_categorias = client.list_item_categories()
 ```
 #### - List Warehouses (Bodegas)
-```
+```python
 bodegas = client.list_warehouses()
 ```
 #### - List Item Custom Fields (Campos adicionales)
-```
+```python
 campos = client.list_item_custom_fields()
 ```
 #### - List Variant Attributes (Variantes)
-```
+```python
 atributos_variantes = client.list_variant_attributes()
 ```
 #### - List price lists (Lista de precios)
-```
+```python
 lista_precios = client.list_price_lists()
 ```
 ### Invoices
 #### - List invoices (Facturas de venta)
-```
+```python
 items = client.list_invoices(order_field=None, order="ASC", limit=None, start=None, date=None)
 # order options = "ASC" or "DESC"
 # Max limit = 30
@@ -111,17 +115,17 @@ items = client.list_invoices(order_field=None, order="ASC", limit=None, start=No
 ```
 ### Terms
 #### - List Terms (Condiciones de pago)
-```
+```python
 condiciones = client.list_terms()
 ```
 ### Taxes
 #### - List Taxes (Impuestos)
-```
+```python
 impuestos = client.list_taxes()
 ```
 ### Accounts
 #### - List Accounts (Cuentas)
-```
+```python
 cuentas = client.list_accounts(format_acc="tree", type_acc=None)
 # format_acc options = "tree" or "plain"
 # type_acc options = "income", "expense", "asset", "liability" or "equity"
