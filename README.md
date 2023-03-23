@@ -9,6 +9,7 @@ pip install alegra-python
 ```
 ## Usage
 ```python
+from alegra.client import Client
 client = Client(email, token)
 ```
 ### Get company information (Compañía)
