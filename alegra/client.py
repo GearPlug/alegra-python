@@ -24,6 +24,13 @@ class Client(object):
         params = {"order_direction": order, "order_field": order_field, "limit": limit, "start": start}
         return self.get("contacts", params=params)
 
+    def get_contact(self, contact_id, extra_fields=None):
+        params = {}
+        if extra_fields is not None:
+            params.update(fields=extra_fields)
+        
+        return self.get(f"contacts/{contact_id}", params=params)
+
     def create_contact(self, contact):
         """
         Contact must be a dict object, check README for an example.
