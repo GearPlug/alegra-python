@@ -8,7 +8,7 @@ def read(fname):
 
 setup(
     name="alegra-python",
-    version="0.1.1",
+    version="0.1.2",
     description="API wrapper for Alegra written in Python",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
